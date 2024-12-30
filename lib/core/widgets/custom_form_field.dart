@@ -69,7 +69,7 @@ class _CustomFormFieldState extends State<CustomFormField>
             : EdgeInsets.zero;
         return Container(
           constraints: BoxConstraints(
-            maxHeight: Dimensions.inputHeight.h,
+            maxHeight: Dimensions.inputMaxHeight.h,
             minHeight: Dimensions.inputHeight.h,
           ),
           padding: padding,
@@ -92,7 +92,7 @@ class _CustomFormFieldState extends State<CustomFormField>
                   final result = widget.isOptional
                       ? widget.validator?.call(value)
                       : isNullOrEmptyValidator(
-                          context,
+                            context,
                             value,
                           ) ??
                           widget.validator?.call(value);

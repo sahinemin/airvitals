@@ -9,5 +9,6 @@ abstract final class Dimensions {
 
   static const double buttonHeight = 48;
   static const double inputHeight = 76;
+  static const double inputMaxHeight = 100;
   static const double borderRadius = 8;
 }

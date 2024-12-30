@@ -9,6 +9,8 @@ abstract class BaseRoute extends GoRouteData {
     return CustomTransitionPage<void>(
       key: state.pageKey,
       child: build(context, state),
+      transitionDuration: Durations.medium4,
+      reverseTransitionDuration: Durations.medium4,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         // Check if this is a secondary transition
         if (secondaryAnimation.status != AnimationStatus.dismissed) {
