@@ -40,7 +40,7 @@ _\*Airvitals works on iOS, Android, Web, and Windows._
 To run all unit and widget tests use the following command:
 
 ```sh
-$ flutter test --coverage --test-randomize-ordering-seed random
+flutter test --coverage --test-randomize-ordering-seed random
 ```
 
 To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
@@ -61,7 +61,7 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 
 ### Adding Strings
 
-1. To add a new localizable string, open the `app_en.arb` file at `lib/l10n/arb/app_en.arb`.
+To add a new localizable string, open the `app_en.arb` file at `lib/l10n/arb/app_en.arb`.
 
 ```arb
 {
@@ -73,9 +73,9 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 }
 ```
 
-2. Then add a new key/value and description
+Then add a new key/value and description
 
-```arb
+```dart
 {
     "@@locale": "en",
     "counterAppBarTitle": "Counter",
@@ -89,7 +89,7 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 }
 ```
 
-3. Use the new string
+Use the new string
 
 ```dart
 import 'package:airvitals/l10n/l10n.dart';
@@ -109,26 +109,26 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
     ...
 
     <key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>es</string>
-	</array>
+ <array>
+  <string>en</string>
+  <string>es</string>
+ </array>
 
     ...
 ```
 
 ### Adding Translations
 
-1. For each supported locale, add a new ARB file in `lib/l10n/arb`.
+For each supported locale, add a new ARB file in `lib/l10n/arb`.
 
-```
+```dart
 ├── l10n
 │   ├── arb
 │   │   ├── app_en.arb
 │   │   └── app_es.arb
 ```
 
-2. Add the translated strings to each `.arb` file:
+Add the translated strings to each `.arb` file:
 
 `app_en.arb`
 

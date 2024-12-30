@@ -1,20 +1,21 @@
-part of '../pages/sign_up_page.dart';
+part of '../pages/sign_in_page.dart';
 
 final class _ErrorText extends StatelessWidget {
   const _ErrorText(this.state);
 
-  final SignUpState state;
+  final SignInState state;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final colorScheme = ColorScheme.of(context);
 
     return switch (state) {
-      SignUpFailure(failure: final failure) => Column(
+      SignInFailure(failure: final failure) => Column(
           children: [
             Text(
               _mapFailureToMessage(failure, l10n),
-              style: TextStyle(color: context.colors.error),
+              style: TextStyle(color: colorScheme.error),
             ),
             Dimensions.sm.h.verticalSpace,
           ],
@@ -25,9 +26,9 @@ final class _ErrorText extends StatelessWidget {
 
   String _mapFailureToMessage(AuthFailure failure, AppLocalizations l10n) =>
       switch (failure) {
-        EmailAlreadyInUseFailure() => l10n.emailAlreadyInUseError,
         InvalidEmailFailure() => l10n.invalidEmailError,
-        WeakPasswordFailure() => l10n.weakPasswordError,
+        WrongPasswordFailure() => l10n.wrongPasswordError,
+        UserNotFoundFailure() => l10n.userNotFoundError,
         ServerFailure() => l10n.serverError,
         _ => l10n.serverError,
       };

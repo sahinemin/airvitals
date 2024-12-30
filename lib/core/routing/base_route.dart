@@ -10,6 +10,21 @@ abstract class BaseRoute extends GoRouteData {
       key: state.pageKey,
       child: build(context, state),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        // Check if this is a secondary transition
+        if (secondaryAnimation.status != AnimationStatus.dismissed) {
+          // Secondary transition - slide from bottom
+          return SlideTransition(
+            position: secondaryAnimation.drive(
+              Tween<Offset>(
+                begin: Offset.zero,
+                end: const Offset(0, -0.25),
+              ).chain(CurveTween(curve: Curves.easeInOut)),
+            ),
+            child: child,
+          );
+        }
+
+        // Primary transition - fade and slide from right
         return FadeTransition(
           opacity: animation,
           child: SlideTransition(

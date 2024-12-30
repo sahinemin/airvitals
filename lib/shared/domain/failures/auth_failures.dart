@@ -2,18 +2,26 @@ sealed class AuthFailure {
   const AuthFailure();
 }
 
-class EmailAlreadyInUseFailure extends AuthFailure {
-  const EmailAlreadyInUseFailure();
-}
-
-class WeakPasswordFailure extends AuthFailure {
-  const WeakPasswordFailure();
-}
-
-class InvalidEmailFailure extends AuthFailure {
+final class InvalidEmailFailure extends AuthFailure {
   const InvalidEmailFailure();
 }
 
-class ServerFailure extends AuthFailure {
+final class WrongPasswordFailure extends AuthFailure {
+  const WrongPasswordFailure();
+}
+
+final class UserNotFoundFailure extends AuthFailure {
+  const UserNotFoundFailure();
+}
+
+final class EmailAlreadyInUseFailure extends AuthFailure {
+  const EmailAlreadyInUseFailure();
+}
+
+final class WeakPasswordFailure extends AuthFailure {
+  const WeakPasswordFailure();
+}
+
+final class ServerFailure extends AuthFailure {
   const ServerFailure();
 }

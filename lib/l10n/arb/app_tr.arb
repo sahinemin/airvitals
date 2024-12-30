@@ -1,0 +1,83 @@
+{
+    "@@locale": "tr",
+    "appTitle": "Airvitals",
+    "@appTitle": {
+        "description": "Uygulama başlığı"
+    },
+    "serverError": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "@serverError": {
+        "description": "Genel sunucu hatası mesajı"
+    },
+    "emailLabel": "E-posta",
+    "@emailLabel": {
+        "description": "E-posta giriş alanı etiketi"
+    },
+    "passwordLabel": "Şifre",
+    "@passwordLabel": {
+        "description": "Şifre giriş alanı etiketi"
+    },
+    "confirmPasswordLabel": "Şifreyi Onayla",
+    "@confirmPasswordLabel": {
+        "description": "Şifre onaylama alanı etiketi"
+    },
+    "signInTitle": "Giriş Yap",
+    "@signInTitle": {
+        "description": "Giriş sayfası başlığı"
+    },
+    "signUpTitle": "Kayıt Ol",
+    "@signUpTitle": {
+        "description": "Kayıt sayfası başlığı"
+    },
+    "signInButtonLabel": "Giriş Yap",
+    "@signInButtonLabel": {
+        "description": "Giriş yapma butonu etiketi"
+    },
+    "signUpButtonLabel": "Kayıt Ol",
+    "@signUpButtonLabel": {
+        "description": "Kayıt olma butonu etiketi"
+    },
+    "noAccountMessage": "Hesabınız yok mu? ",
+    "@noAccountMessage": {
+        "description": "Hesap yoksa gösterilen mesaj"
+    },
+    "haveAccountMessage": "Zaten hesabınız var mı? ",
+    "@haveAccountMessage": {
+        "description": "Hesap varsa gösterilen mesaj"
+    },
+    "invalidEmailError": "Geçersiz e-posta adresi",
+    "@invalidEmailError": {
+        "description": "Geçersiz e-posta hatası"
+    },
+    "invalidPasswordError": "Şifre en az 6 karakter olmalıdır",
+    "@invalidPasswordError": {
+        "description": "Geçersiz şifre hatası"
+    },
+    "wrongPasswordError": "Yanlış şifre",
+    "@wrongPasswordError": {
+        "description": "Yanlış şifre hatası"
+    },
+    "userNotFoundError": "Kullanıcı bulunamadı",
+    "@userNotFoundError": {
+        "description": "Kullanıcı bulunamadı hatası"
+    },
+    "emailAlreadyInUseError": "Bu e-posta adresi zaten kullanımda",
+    "@emailAlreadyInUseError": {
+        "description": "E-posta zaten kullanımda hatası"
+    },
+    "weakPasswordError": "Şifre çok zayıf",
+    "@weakPasswordError": {
+        "description": "Zayıf şifre hatası"
+    },
+    "passwordsDoNotMatch": "Şifreler eşleşmiyor",
+    "@passwordsDoNotMatch": {
+        "description": "Şifreler eşleşmiyor hatası"
+    },
+    "requiredFieldError": "Bu alan zorunludur",
+    "@requiredFieldError": {
+        "description": "Zorunlu alan hatası"
+    },
+    "forgotPasswordButton": "Şifremi Unuttum?",
+    "@forgotPasswordButton": {
+        "description": "Şifremi unuttum butonu etiketi"
+    }
+} 

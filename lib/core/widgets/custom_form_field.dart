@@ -1,5 +1,4 @@
 import 'package:airvitals/core/presentation/mixins/validator_mixin.dart';
-import 'package:airvitals/core/presentation/styles/app_colors.dart';
 import 'package:airvitals/core/presentation/values/dimensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +58,9 @@ class _CustomFormFieldState extends State<CustomFormField>
     with ValidatorMixin, CustomFormFieldMixin {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
+    final textTheme = TextTheme.of(context);
+
     return ValueListenableBuilder<bool>(
       valueListenable: hasError,
       builder: (context, hasErrorValue, child) {
@@ -75,6 +77,9 @@ class _CustomFormFieldState extends State<CustomFormField>
             valueListenable: obscureText,
             builder: (context, obscureTextValue, child) {
               return TextFormField(
+                style: textTheme.bodyLarge?.copyWith(
+                  color: colorScheme.onSurface,
+                ),
                 obscureText: obscureTextValue,
                 maxLines: widget.maxLines,
                 maxLength: widget.maxLength,
@@ -103,6 +108,9 @@ class _CustomFormFieldState extends State<CustomFormField>
                   }
                 },
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: colorScheme.surface,
+                  prefixIcon: widget.prefixIcon,
                   suffixIcon: Visibility(
                     visible: widget.obscureText,
                     child: IconButton(
@@ -110,34 +118,65 @@ class _CustomFormFieldState extends State<CustomFormField>
                         obscureTextValue
                             ? Icons.visibility_outlined
                             : Icons.visibility_off_outlined,
-                        color: AppColors.textSecondary,
+                        color: hasErrorValue
+                            ? colorScheme.error
+                            : colorScheme.onSurfaceVariant,
                       ),
                       onPressed: () {
                         obscureText.value = !obscureTextValue;
                       },
                     ),
                   ),
-                  floatingLabelStyle:
-                      Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: hasError.value
-                                ? AppColors.error
-                                : AppColors.primary,
-                          ),
-                  helperStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: hasError.value
-                            ? AppColors.error
-                            : AppColors.textSecondary,
-                      ),
-                  labelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
+                  border: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.borderRadius),
+                    borderSide: BorderSide(color: colorScheme.outline),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.borderRadius),
+                    borderSide: BorderSide(color: colorScheme.outline),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.borderRadius),
+                    borderSide: BorderSide(
+                      color: colorScheme.primary,
+                      width: 2,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.borderRadius),
+                    borderSide: BorderSide(color: colorScheme.error),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.borderRadius),
+                    borderSide: BorderSide(
+                      color: colorScheme.error,
+                      width: 2,
+                    ),
+                  ),
+                  floatingLabelStyle: textTheme.bodyLarge?.copyWith(
+                    color:
+                        hasErrorValue ? colorScheme.error : colorScheme.primary,
+                  ),
+                  helperStyle: textTheme.labelSmall?.copyWith(
+                    color: hasErrorValue
+                        ? colorScheme.error
+                        : colorScheme.onSurfaceVariant,
+                  ),
+                  labelStyle: textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
                   contentPadding: widget.contentPadding ??
                       EdgeInsets.symmetric(
                         horizontal: Dimensions.md.w,
                         vertical: Dimensions.sm.h,
                       ),
                   labelText: widget.labelText,
-                  helperText: hasError.value ? widget.helperText : null,
+                  helperText: hasErrorValue ? widget.helperText : null,
                 ),
                 onFieldSubmitted: widget.onFieldSubmitted,
                 inputFormatters: widget.inputFormatters,

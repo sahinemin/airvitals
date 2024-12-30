@@ -1,9 +1,5 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    },
     "signUpTitle": "Sign Up",
     "@signUpTitle": {
         "description": "Title shown in the AppBar of the Sign Up Page"
@@ -37,5 +33,13 @@
         "description": "Generic server error message"
     },
     "confirmPasswordLabel": "Confirm Password",
-    "passwordsDoNotMatch": "Passwords do not match"
+    "passwordsDoNotMatch": "Passwords do not match",
+    "signInTitle": "Sign In",
+    "signInButtonLabel": "Sign In",
+    "forgotPasswordButton": "Forgot Password?",
+    "wrongPasswordError": "Wrong password. Please try again",
+    "userNotFoundError": "No user found with this email",
+    "serverError": "Something went wrong. Please try again",
+    "noAccountMessage": "Don't have an account?",
+    "haveAccountMessage": "Already have an account?"
 }
