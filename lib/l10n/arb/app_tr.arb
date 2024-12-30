@@ -46,11 +46,11 @@
     },
     "invalidEmailError": "Geçersiz e-posta adresi",
     "@invalidEmailError": {
-        "description": "Geçersiz e-posta hatası"
+        "description": "Geçersiz e-posta formatı için hata mesajı"
     },
-    "invalidPasswordError": "Şifre en az 6 karakter olmalıdır",
+    "invalidPasswordError": "Şifre en az 8 karakter olmalıdır",
     "@invalidPasswordError": {
-        "description": "Geçersiz şifre hatası"
+        "description": "Şifre çok kısa olduğunda gösterilen hata mesajı"
     },
     "wrongPasswordError": "Yanlış şifre",
     "@wrongPasswordError": {
@@ -74,10 +74,26 @@
     },
     "requiredFieldError": "Bu alan zorunludur",
     "@requiredFieldError": {
-        "description": "Zorunlu alan hatası"
+        "description": "Alan boş bırakıldığında gösterilen hata mesajı"
     },
     "forgotPasswordButton": "Şifremi Unuttum?",
     "@forgotPasswordButton": {
         "description": "Şifremi unuttum butonu etiketi"
+    },
+    "passwordUppercaseError": "Şifre büyük harf içermelidir",
+    "@passwordUppercaseError": {
+        "description": "Şifrede büyük harf olmadığında gösterilen hata mesajı"
+    },
+    "passwordLowercaseError": "Şifre küçük harf içermelidir",
+    "@passwordLowercaseError": {
+        "description": "Şifrede küçük harf olmadığında gösterilen hata mesajı"
+    },
+    "passwordSpecialCharError": "Şifre özel karakter içermelidir",
+    "@passwordSpecialCharError": {
+        "description": "Şifrede özel karakter olmadığında gösterilen hata mesajı"
+    },
+    "passwordNumberError": "Şifre rakam içermelidir",
+    "@passwordNumberError": {
+        "description": "Şifrede rakam olmadığında gösterilen hata mesajı"
     }
 } 

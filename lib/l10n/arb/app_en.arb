@@ -20,7 +20,7 @@
     "@emailAlreadyInUseError": {
         "description": "Error message when email is already registered"
     },
-    "invalidEmailError": "Invalid email",
+    "invalidEmailError": "Invalid email address",
     "@invalidEmailError": {
         "description": "Error message when email format is invalid"
     },
@@ -41,5 +41,29 @@
     "userNotFoundError": "No user found with this email",
     "serverError": "Something went wrong. Please try again",
     "noAccountMessage": "Don't have an account?",
-    "haveAccountMessage": "Already have an account?"
+    "haveAccountMessage": "Already have an account?",
+    "invalidPasswordError": "Password must be at least 8 characters",
+    "@invalidPasswordError": {
+        "description": "Error message when password is too short"
+    },
+    "passwordUppercaseError": "Password must contain uppercase letters",
+    "@passwordUppercaseError": {
+        "description": "Error message when password lacks uppercase letters"
+    },
+    "passwordLowercaseError": "Password must contain lowercase letters",
+    "@passwordLowercaseError": {
+        "description": "Error message when password lacks lowercase letters"
+    },
+    "passwordSpecialCharError": "Password must contain special characters",
+    "@passwordSpecialCharError": {
+        "description": "Error message when password lacks special characters"
+    },
+    "passwordNumberError": "Password must contain numbers",
+    "@passwordNumberError": {
+        "description": "Error message when password lacks numbers"
+    },
+    "requiredFieldError": "This field is required",
+    "@requiredFieldError": {
+        "description": "Error message when field is empty"
+    }
 }

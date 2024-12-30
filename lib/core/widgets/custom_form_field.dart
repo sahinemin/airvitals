@@ -92,8 +92,8 @@ class _CustomFormFieldState extends State<CustomFormField>
                   final result = widget.isOptional
                       ? widget.validator?.call(value)
                       : isNullOrEmptyValidator(
+                          context,
                             value,
-                            message: widget.emptyFieldMessage,
                           ) ??
                           widget.validator?.call(value);
                   hasError.value = result != null;

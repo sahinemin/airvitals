@@ -26,7 +26,7 @@ final class PasswordFormField extends StatelessWidget with ValidatorMixin {
       textInputAction: textInputAction,
       autofillHints: const [AutofillHints.password],
       validator: (value) {
-        final isValid = isValidPassword(value);
+        final isValid = isValidPassword(context, value);
         if (isValid != null) {
           return isValid;
         }

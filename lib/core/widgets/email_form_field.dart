@@ -1,5 +1,6 @@
 import 'package:airvitals/core/presentation/mixins/validator_mixin.dart';
 import 'package:airvitals/core/widgets/custom_form_field.dart';
+import 'package:airvitals/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 final class EmailFormField extends StatelessWidget with ValidatorMixin {
@@ -17,11 +18,11 @@ final class EmailFormField extends StatelessWidget with ValidatorMixin {
   @override
   Widget build(BuildContext context) {
     return CustomFormField(
-      labelText: labelText ?? 'Email',
+      labelText: labelText ?? context.l10n.emailLabel,
       keyboardType: TextInputType.emailAddress,
       controller: emailController,
       autofillHints: const [AutofillHints.email],
-      validator: isValidEmail,
+      validator: (value) => isValidEmail(context, value),
       textInputAction: textInputAction,
     );
   }

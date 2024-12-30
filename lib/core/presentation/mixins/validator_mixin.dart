@@ -1,37 +1,42 @@
+import 'package:airvitals/l10n/l10n.dart';
+import 'package:flutter/material.dart';
+
 mixin ValidatorMixin {
-  String? isValidEmail(String? value) {
+  String? isValidEmail(BuildContext context, String? value) {
+    final l10n = context.l10n;
     final emailRegex = RegExp(
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
     );
-    final isNullOrEmpty = isNullOrEmptyValidator(value);
+    final isNullOrEmpty = isNullOrEmptyValidator(context, value);
 
     if (isNullOrEmpty != null) return isNullOrEmpty;
 
     if (!emailRegex.hasMatch(value!)) {
-      return 'Invalid email address';
+      return l10n.invalidEmailError;
     }
 
     return null;
   }
 
-  String? isValidPassword(String? value) {
-    final isNullOrEmpty = isNullOrEmptyValidator(value);
+  String? isValidPassword(BuildContext context, String? value) {
+    final l10n = context.l10n;
+    final isNullOrEmpty = isNullOrEmptyValidator(context, value);
 
     if (isNullOrEmpty != null) return isNullOrEmpty;
     if (!isAtLeast8Characters(value!)) {
-      return 'Password must be at least 8 characters';
+      return l10n.invalidPasswordError;
     }
     if (!containsUppercase(value)) {
-      return 'Password must contain uppercase letters';
+      return l10n.passwordUppercaseError;
     }
     if (!containsLowercase(value)) {
-      return 'Password must contain lowercase letters';
+      return l10n.passwordLowercaseError;
     }
     if (!containsSpecialCharacter(value)) {
-      return 'Password must contain special characters';
+      return l10n.passwordSpecialCharError;
     }
     if (!containsNumber(value)) {
-      return 'Password must contain numbers';
+      return l10n.passwordNumberError;
     }
     return null;
   }
@@ -43,10 +48,10 @@ mixin ValidatorMixin {
   bool containsSpecialCharacter(String password) =>
       RegExp(r'[\W]').hasMatch(password);
 
-  String? isNullOrEmptyValidator(String? value, {String? message}) {
-    message ??= 'This field is required';
+  String? isNullOrEmptyValidator(BuildContext context, String? value) {
+    final l10n = context.l10n;
     if (value == null || value.isEmpty) {
-      return message;
+      return l10n.requiredFieldError;
     }
     return null;
   }
