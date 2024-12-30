@@ -1,0 +1,41 @@
+{
+    "@@locale": "en",
+    "counterAppBarTitle": "Counter",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "signUpTitle": "Sign Up",
+    "@signUpTitle": {
+        "description": "Title shown in the AppBar of the Sign Up Page"
+    },
+    "emailLabel": "Email",
+    "@emailLabel": {
+        "description": "Label for email input field"
+    },
+    "passwordLabel": "Password",
+    "@passwordLabel": {
+        "description": "Label for password input field"
+    },
+    "signUpButtonLabel": "Sign Up",
+    "@signUpButtonLabel": {
+        "description": "Label for sign up button"
+    },
+    "emailAlreadyInUseError": "Email already in use",
+    "@emailAlreadyInUseError": {
+        "description": "Error message when email is already registered"
+    },
+    "invalidEmailError": "Invalid email",
+    "@invalidEmailError": {
+        "description": "Error message when email format is invalid"
+    },
+    "weakPasswordError": "Password is too weak",
+    "@weakPasswordError": {
+        "description": "Error message when password is too weak"
+    },
+    "serverError": "Server error occurred",
+    "@serverError": {
+        "description": "Generic server error message"
+    },
+    "confirmPasswordLabel": "Confirm Password",
+    "passwordsDoNotMatch": "Passwords do not match"
+}
