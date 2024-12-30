@@ -121,7 +121,6 @@ packages/**/pubspec.lock
 
 # Web related
 lib/generated_plugin_registrant.dart
-
 # Symbolication related
 app.*.symbols
 
@@ -145,3 +144,6 @@ local.yaml
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+
+# Firebase related
+.firebase/

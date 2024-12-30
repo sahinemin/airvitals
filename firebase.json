@@ -1,1 +1,52 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"airvitals-project","appId":"1:677813690935:android:708a1509d5e0552804d5b2","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"airvitals-project","appId":"1:677813690935:ios:ff3146dede06a0ed04d5b2","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"airvitals-project","appId":"1:677813690935:ios:00de98047aecba6004d5b2","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"airvitals-project","configurations":{"android":"1:677813690935:android:708a1509d5e0552804d5b2","ios":"1:677813690935:ios:ff3146dede06a0ed04d5b2","macos":"1:677813690935:ios:00de98047aecba6004d5b2","web":"1:677813690935:web:2a3ab75d5b6aed4704d5b2","windows":"1:677813690935:web:ad6a2a30089342ba04d5b2"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "airvitals-project",
+          "appId": "1:677813690935:android:708a1509d5e0552804d5b2",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "airvitals-project",
+          "appId": "1:677813690935:ios:ff3146dede06a0ed04d5b2",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "airvitals-project",
+          "appId": "1:677813690935:ios:00de98047aecba6004d5b2",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "airvitals-project",
+          "configurations": {
+            "android": "1:677813690935:android:708a1509d5e0552804d5b2",
+            "ios": "1:677813690935:ios:ff3146dede06a0ed04d5b2",
+            "macos": "1:677813690935:ios:00de98047aecba6004d5b2",
+            "web": "1:677813690935:web:2a3ab75d5b6aed4704d5b2",
+            "windows": "1:677813690935:web:ad6a2a30089342ba04d5b2"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "europe-west1"
+    }
+  }
+}

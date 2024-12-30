@@ -128,15 +128,23 @@ abstract final class AppTheme {
     );
 
     return baseTheme.copyWith(
-      textTheme: const TextTheme(
-        displayLarge: AppTypography.displayLarge,
-        displayMedium: AppTypography.displayMedium,
-        titleLarge: AppTypography.titleLarge,
-        titleMedium: AppTypography.titleMedium,
-        bodyLarge: AppTypography.bodyLarge,
-        bodyMedium: AppTypography.bodyMedium,
-        labelLarge: AppTypography.labelLarge,
-        labelMedium: AppTypography.labelMedium,
+      textTheme: TextTheme(
+        displayLarge:
+            AppTypography.displayLarge.copyWith(color: AppColors.textInverse),
+        displayMedium:
+            AppTypography.displayMedium.copyWith(color: AppColors.textInverse),
+        titleLarge:
+            AppTypography.titleLarge.copyWith(color: AppColors.textInverse),
+        titleMedium:
+            AppTypography.titleMedium.copyWith(color: AppColors.textInverse),
+        bodyLarge:
+            AppTypography.bodyLarge.copyWith(color: AppColors.textInverse),
+        bodyMedium:
+            AppTypography.bodyMedium.copyWith(color: AppColors.textInverse),
+        labelLarge:
+            AppTypography.labelLarge.copyWith(color: AppColors.textInverse),
+        labelMedium:
+            AppTypography.labelMedium.copyWith(color: AppColors.textInverse),
       ),
       // Custom color extensions
       extensions: const <ThemeExtension<dynamic>>[
