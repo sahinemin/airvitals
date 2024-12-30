@@ -8,6 +8,6 @@ abstract final class Dimensions {
   static const double xxl = 40;
 
   static const double buttonHeight = 48;
-  static const double inputHeight = 56;
+  static const double inputHeight = 76;
   static const double borderRadius = 8;
 }

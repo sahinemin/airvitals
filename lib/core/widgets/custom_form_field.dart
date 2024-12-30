@@ -69,7 +69,7 @@ class _CustomFormFieldState extends State<CustomFormField>
             : EdgeInsets.zero;
         return Container(
           constraints: BoxConstraints(
-            maxHeight: 76.h,
+            maxHeight: Dimensions.inputHeight.h,
             minHeight: Dimensions.inputHeight.h,
           ),
           padding: padding,

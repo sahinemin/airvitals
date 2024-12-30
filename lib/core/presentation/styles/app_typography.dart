@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppTypography {
-  static const _fontFamily = 'Inter';
+  static const _fontFamily = 'Noto Sans';
 
   static const displayLarge = TextStyle(
     fontSize: 32,
