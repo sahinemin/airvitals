@@ -4,9 +4,9 @@
     "@appTitle": {
         "description": "Uygulama başlığı"
     },
-    "serverError": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
-    "@serverError": {
-        "description": "Genel sunucu hatası mesajı"
+    "signUpTitle": "Kayıt Ol",
+    "@signUpTitle": {
+        "description": "Kayıt sayfası başlığı"
     },
     "emailLabel": "E-posta",
     "@emailLabel": {
@@ -16,69 +16,65 @@
     "@passwordLabel": {
         "description": "Şifre giriş alanı etiketi"
     },
-    "confirmPasswordLabel": "Şifreyi Onayla",
-    "@confirmPasswordLabel": {
-        "description": "Şifre onaylama alanı etiketi"
-    },
-    "signInTitle": "Giriş Yap",
-    "@signInTitle": {
-        "description": "Giriş sayfası başlığı"
-    },
-    "signUpTitle": "Kayıt Ol",
-    "@signUpTitle": {
-        "description": "Kayıt sayfası başlığı"
-    },
-    "signInButtonLabel": "Giriş Yap",
-    "@signInButtonLabel": {
-        "description": "Giriş yapma butonu etiketi"
-    },
     "signUpButtonLabel": "Kayıt Ol",
     "@signUpButtonLabel": {
         "description": "Kayıt olma butonu etiketi"
-    },
-    "noAccountMessage": "Hesabınız yok mu? ",
-    "@noAccountMessage": {
-        "description": "Hesap yoksa gösterilen mesaj"
-    },
-    "haveAccountMessage": "Zaten hesabınız var mı? ",
-    "@haveAccountMessage": {
-        "description": "Hesap varsa gösterilen mesaj"
-    },
-    "invalidEmailError": "Geçersiz e-posta adresi",
-    "@invalidEmailError": {
-        "description": "Geçersiz e-posta formatı için hata mesajı"
-    },
-    "invalidPasswordError": "Şifre en az 8 karakter olmalıdır",
-    "@invalidPasswordError": {
-        "description": "Şifre çok kısa olduğunda gösterilen hata mesajı"
-    },
-    "wrongPasswordError": "Yanlış şifre",
-    "@wrongPasswordError": {
-        "description": "Yanlış şifre hatası"
-    },
-    "userNotFoundError": "Kullanıcı bulunamadı",
-    "@userNotFoundError": {
-        "description": "Kullanıcı bulunamadı hatası"
     },
     "emailAlreadyInUseError": "Bu e-posta adresi zaten kullanımda",
     "@emailAlreadyInUseError": {
         "description": "E-posta zaten kullanımda hatası"
     },
+    "invalidEmailError": "Geçersiz e-posta adresi",
+    "@invalidEmailError": {
+        "description": "Geçersiz e-posta formatı için hata mesajı"
+    },
     "weakPasswordError": "Şifre çok zayıf",
     "@weakPasswordError": {
         "description": "Zayıf şifre hatası"
+    },
+    "serverError": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "@serverError": {
+        "description": "Genel sunucu hatası mesajı"
+    },
+    "confirmPasswordLabel": "Şifreyi Onayla",
+    "@confirmPasswordLabel": {
+        "description": "Şifre onaylama alanı etiketi"
     },
     "passwordsDoNotMatch": "Şifreler eşleşmiyor",
     "@passwordsDoNotMatch": {
         "description": "Şifreler eşleşmiyor hatası"
     },
-    "requiredFieldError": "Bu alan zorunludur",
-    "@requiredFieldError": {
-        "description": "Alan boş bırakıldığında gösterilen hata mesajı"
+    "signInTitle": "Giriş Yap",
+    "@signInTitle": {
+        "description": "Giriş sayfası başlığı"
+    },
+    "signInButtonLabel": "Giriş Yap",
+    "@signInButtonLabel": {
+        "description": "Giriş yapma butonu etiketi"
     },
     "forgotPasswordButton": "Şifremi Unuttum?",
     "@forgotPasswordButton": {
-        "description": "Şifremi unuttum butonu etiketi"
+        "description": "Şifremi unuttum butonu"
+    },
+    "wrongPasswordError": "Yanlış şifre. Lütfen tekrar deneyin",
+    "@wrongPasswordError": {
+        "description": "Yanlış şifre hatası"
+    },
+    "userNotFoundError": "Bu e-posta ile kayıtlı kullanıcı bulunamadı",
+    "@userNotFoundError": {
+        "description": "Kullanıcı bulunamadı hatası"
+    },
+    "noAccountMessage": "Hesabınız yok mu?",
+    "@noAccountMessage": {
+        "description": "Hesap yoksa gösterilen mesaj"
+    },
+    "haveAccountMessage": "Zaten hesabınız var mı?",
+    "@haveAccountMessage": {
+        "description": "Hesap varsa gösterilen mesaj"
+    },
+    "invalidPasswordError": "Şifre en az 8 karakter olmalıdır",
+    "@invalidPasswordError": {
+        "description": "Şifre çok kısa olduğunda gösterilen hata mesajı"
     },
     "passwordUppercaseError": "Şifre büyük harf içermelidir",
     "@passwordUppercaseError": {
@@ -95,5 +91,33 @@
     "passwordNumberError": "Şifre rakam içermelidir",
     "@passwordNumberError": {
         "description": "Şifrede rakam olmadığında gösterilen hata mesajı"
+    },
+    "requiredFieldError": "Bu alan zorunludur",
+    "@requiredFieldError": {
+        "description": "Alan boş bırakıldığında gösterilen hata mesajı"
+    },
+    "homeTitle": "Air Vitals",
+    "@homeTitle": {
+        "description": "Ana sayfa başlığı"
+    },
+    "temperature": "Sıcaklık",
+    "@temperature": {
+        "description": "Sıcaklık değeri etiketi"
+    },
+    "humidity": "Nem",
+    "@humidity": {
+        "description": "Nem değeri etiketi"
+    },
+    "connectionError": "Bağlantı hatası. Lütfen tekrar deneyin.",
+    "@connectionError": {
+        "description": "Bağlantı hatası mesajı"
+    },
+    "noDataError": "Veri bulunamadı.",
+    "@noDataError": {
+        "description": "Veri bulunamadı hatası mesajı"
+    },
+    "signOut": "Çıkış Yap",
+    "@signOut": {
+        "description": "Çıkış yapma butonu etiketi"
     }
 } 

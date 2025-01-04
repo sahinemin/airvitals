@@ -50,4 +50,22 @@ abstract final class AppTypography {
     fontWeight: FontWeight.w500,
     fontFamily: _fontFamily,
   );
+
+  static const headlineLarge = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+  );
+
+  static const headlineMedium = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+  );
+
+  static const headlineSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+  );
 }

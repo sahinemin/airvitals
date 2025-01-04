@@ -145,6 +145,12 @@ abstract final class AppTheme {
             AppTypography.labelLarge.copyWith(color: AppColors.textInverse),
         labelMedium:
             AppTypography.labelMedium.copyWith(color: AppColors.textInverse),
+        headlineLarge:
+            AppTypography.headlineLarge.copyWith(color: AppColors.textInverse),
+        headlineMedium:
+            AppTypography.headlineMedium.copyWith(color: AppColors.textInverse),
+        headlineSmall:
+            AppTypography.headlineSmall.copyWith(color: AppColors.textInverse),
       ),
       // Custom color extensions
       extensions: const <ThemeExtension<dynamic>>[
