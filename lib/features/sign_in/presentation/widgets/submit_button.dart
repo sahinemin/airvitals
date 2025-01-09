@@ -13,18 +13,14 @@ final class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = ColorScheme.of(context);
-
     return SizedBox(
       height: Dimensions.buttonHeight.h,
-      child: FilledButton(
+      child: ElevatedButton(
         onPressed: onPressed,
         child: isLoading
-            ? SizedBox.square(
+            ? const SizedBox.square(
                 dimension: Dimensions.lg,
-                child: CircularProgressIndicator(
-                  color: colorScheme.onPrimary,
-                ),
+                child: CircularProgressIndicator(),
               )
             : Text(label),
       ),
