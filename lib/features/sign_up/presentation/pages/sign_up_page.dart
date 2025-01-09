@@ -55,17 +55,17 @@ final class _SignUpViewState extends State<SignUpView> with SignUpFormMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Dimensions.lg.h.verticalSpace,
+                  Dimensions.lg.verticalSpace,
                   EmailFormField(
                     emailController: emailController,
                     labelText: l10n.emailLabel,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   PasswordFormField(
                     labelText: l10n.passwordLabel,
                     controller: passwordController,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   PasswordFormField(
                     labelText: l10n.confirmPasswordLabel,
                     controller: confirmPasswordController,
@@ -76,14 +76,14 @@ final class _SignUpViewState extends State<SignUpView> with SignUpFormMixin {
                       return null;
                     },
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   _ErrorText(state),
                   _SubmitButton(
                     onPressed: state is! SignUpLoading ? onSubmit : null,
                     isLoading: state is SignUpLoading,
                     label: l10n.signUpButtonLabel,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

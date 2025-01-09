@@ -54,24 +54,24 @@ final class _SignInViewState extends State<SignInView> with SignInFormMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Dimensions.lg.h.verticalSpace,
+                  Dimensions.lg.verticalSpace,
                   EmailFormField(
                     emailController: emailController,
                     labelText: l10n.emailLabel,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   PasswordFormField(
                     labelText: l10n.passwordLabel,
                     controller: passwordController,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   _ErrorText(state),
                   _SubmitButton(
                     onPressed: state is! SignInLoading ? onSubmit : null,
                     isLoading: state is SignInLoading,
                     label: l10n.signInButtonLabel,
                   ),
-                  Dimensions.md.h.verticalSpace,
+                  Dimensions.md.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

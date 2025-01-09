@@ -75,5 +75,11 @@
     "signOut": "Sign Out",
     "@signOut": {
         "description": "Label for sign out button"
-    }
+    },
+    "roomsTitle": "Rooms",
+    "addRoomTitle": "Add Room",
+    "roomNameLabel": "Room Name",
+    "cancel": "Cancel",
+    "add": "Add",
+    "roomsError": "Failed to load rooms"
 }

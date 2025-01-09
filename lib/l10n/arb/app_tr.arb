@@ -119,5 +119,11 @@
     "signOut": "Çıkış Yap",
     "@signOut": {
         "description": "Çıkış yapma butonu etiketi"
-    }
+    },
+    "roomsTitle": "Odalar",
+    "addRoomTitle": "Oda Ekle",
+    "roomNameLabel": "Oda Adı",
+    "cancel": "İptal",
+    "add": "Ekle",
+    "roomsError": "Odalar yüklenirken bir hata oluştu"
 } 

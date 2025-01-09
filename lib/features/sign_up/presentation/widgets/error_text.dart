@@ -16,7 +16,7 @@ final class _ErrorText extends StatelessWidget {
               _mapFailureToMessage(failure, l10n),
               style: TextStyle(color: context.colors.error),
             ),
-            Dimensions.sm.h.verticalSpace,
+            Dimensions.sm.verticalSpace,
           ],
         ),
       _ => const SizedBox.shrink(),

@@ -1,42 +1,37 @@
-import 'package:airvitals/core/presentation/extensions/theme_extension.dart';
 import 'package:airvitals/core/routing/app_router.dart';
-import 'package:airvitals/features/home/presentation/bloc/sensor_data_bloc.dart';
+import 'package:airvitals/features/home/domain/entities/room.dart';
+import 'package:airvitals/features/home/presentation/bloc/rooms_bloc.dart';
 import 'package:airvitals/l10n/l10n.dart';
-import 'package:airvitals/shared/domain/failures/sensor_failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 
-final class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<SensorDataBloc>()
+      create: (_) => GetIt.I<RoomsBloc>()
         ..add(
-          SensorDataStarted(GetIt.I<FirebaseAuth>().currentUser!.uid),
+          RoomsStarted(GetIt.I<FirebaseAuth>().currentUser!.uid),
         ),
-      child: const HomeView(),
+      child: const _HomeView(),
     );
   }
 }
 
-final class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class _HomeView extends StatelessWidget {
+  const _HomeView();
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.homeTitle),
-        centerTitle: true,
-        elevation: 0,
+        title: Text(l10n.roomsTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -50,65 +45,16 @@ final class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<SensorDataBloc, SensorDataState>(
+      body: BlocBuilder<RoomsBloc, RoomsState>(
         builder: (context, state) {
           return switch (state) {
-            SensorDataInitial() => const SizedBox.shrink(),
-            SensorDataLoading() => const Center(
+            RoomsInitial() => const SizedBox.shrink(),
+            RoomsLoading() => const Center(
                 child: CircularProgressIndicator(),
               ),
-            SensorDataSuccess(data: final data) => Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      theme.colorScheme.primary.withAlpha(25),
-                      theme.colorScheme.primary.withAlpha(13),
-                    ],
-                  ),
-                ),
-                child: SafeArea(
-                  child: Center(
-                    child: SingleChildScrollView(
-                      child: Container(
-                        constraints: BoxConstraints(
-                          maxWidth:
-                              context.width > 600.w ? 600.w : context.width,
-                        ),
-                        padding: EdgeInsets.all(16.w),
-                        child: _RoomCard(
-                          temperature: data.temperature,
-                          humidity: data.humidity,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            SensorDataFailure(failure: final failure) => Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.error_outline,
-                      size: 48.w,
-                      color: theme.colorScheme.error,
-                    ),
-                    16.h.verticalSpace,
-                    Text(
-                      switch (failure) {
-                        ConnectionFailure() => l10n.connectionError,
-                        ServerFailure() => l10n.serverError,
-                        NoDataFailure() => l10n.noDataError,
-                      },
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        color: theme.colorScheme.error,
-                      ),
-                    ),
-                  ],
-                ),
+            RoomsSuccess(rooms: final rooms) => _RoomsGrid(rooms: rooms),
+            RoomsFailure() => Center(
+                child: Text(l10n.roomsError),
               ),
           };
         },
@@ -117,112 +63,216 @@ final class HomeView extends StatelessWidget {
   }
 }
 
-final class _RoomCard extends StatelessWidget {
+class _RoomsGrid extends StatelessWidget {
+  const _RoomsGrid({required this.rooms});
+
+  final List<Room> rooms;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final crossAxisCount = switch (constraints.maxWidth) {
+          > 1200 => 4,
+          > 800 => 3,
+          > 600 => 2,
+          _ => 1,
+        };
+
+        return GridView.builder(
+          padding: const EdgeInsets.all(16),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: 1.5,
+          ),
+          itemCount: rooms.length,
+          itemBuilder: (context, index) {
+            final room = rooms[index];
+            return _RoomCard(
+              name: room.name,
+              temperature: room.temperature,
+              humidity: room.humidity,
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _RoomCard extends StatefulWidget {
   const _RoomCard({
+    required this.name,
     required this.temperature,
     required this.humidity,
   });
 
+  final String name;
   final double temperature;
   final double humidity;
+
+  @override
+  State<_RoomCard> createState() => _RoomCardState();
+}
+
+class _RoomCardState extends State<_RoomCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true);
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = context.l10n;
 
-    return Card(
-      elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(24.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _AnimatedSensorValue(
-              icon: Icons.thermostat,
-              label: l10n.temperature,
-              value: temperature,
-              unit: '°C',
-              color: theme.colorScheme.primary,
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Card(
+          elevation: 8,
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  theme.colorScheme.primary.withAlpha(204),
+                  theme.colorScheme.secondary.withAlpha(153),
+                ],
+                stops: [
+                  0,
+                  _animation.value,
+                ],
+              ),
             ),
-            32.h.verticalSpace,
-            _AnimatedSensorValue(
-              icon: Icons.water_drop,
-              label: l10n.humidity,
-              value: humidity,
-              unit: '%',
-              color: theme.colorScheme.secondary,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.home_rounded,
+                        color: theme.colorScheme.onPrimary,
+                        size: 24,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          widget.name,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            color: theme.colorScheme.onPrimary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _AnimatedValueDisplay(
+                        icon: Icons.thermostat_rounded,
+                        value: widget.temperature,
+                        unit: '°C',
+                        label: l10n.temperature,
+                        animation: _animation,
+                      ),
+                      _AnimatedValueDisplay(
+                        icon: Icons.water_drop_rounded,
+                        value: widget.humidity,
+                        unit: '%',
+                        label: l10n.humidity,
+                        animation: _animation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
 
-final class _AnimatedSensorValue extends StatelessWidget {
-  const _AnimatedSensorValue({
+class _AnimatedValueDisplay extends StatelessWidget {
+  const _AnimatedValueDisplay({
     required this.icon,
-    required this.label,
     required this.value,
     required this.unit,
-    required this.color,
+    required this.label,
+    required this.animation,
   });
 
   final IconData icon;
-  final String label;
   final double value;
   final String unit;
-  final Color color;
+  final String label;
+  final Animation<double> animation;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return TweenAnimationBuilder(
-      tween: Tween<double>(begin: 0, end: value),
-      duration: const Duration(seconds: 1),
-      curve: Curves.easeOutCubic,
-      builder: (context, value, child) => Column(
-        children: [
-          Icon(
-            icon,
-            size: 48.w,
-            color: color,
-          ),
-          16.h.verticalSpace,
-          Text(
-            label,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          color: theme.colorScheme.onPrimary.withAlpha(180),
+          size: 24,
+        ),
+        const SizedBox(height: 8),
+        TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: value),
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeOutCubic,
+          builder: (context, value, child) => Text(
+            '${value.toStringAsFixed(1)}$unit',
             style: theme.textTheme.titleLarge?.copyWith(
-              color: theme.colorScheme.onSurface.withAlpha(204),
+              color: theme.colorScheme.onPrimary,
+              fontWeight: FontWeight.w600,
             ),
           ),
-          8.h.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value.toStringAsFixed(1),
-                style: theme.textTheme.displayMedium?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                unit,
-                style: theme.textTheme.titleLarge?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onPrimary.withAlpha(180),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
