@@ -12,6 +12,16 @@ Real-time environmental monitoring app
 
 ## Getting Started 🚀
 
+### Key Directories
+
+- `embedded/`: Contains IoT device code
+  - `receiver/`: Receiver device implementation
+  - `sender/`: Sender device implementation
+- `presentation/`: Project documentation and presentation of it with video
+- `lib/`: Main Flutter application code
+- `assets/`: Static resources (images, fonts, etc.)
+- `android/`, `ios/`, `web/`, `windows/`, `macos/`: Platform-specific code
+
 This project contains 3 flavors:
 
 - development
