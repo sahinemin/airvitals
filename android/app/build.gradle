@@ -54,7 +54,7 @@ android {
         applicationId "com.iot.project.airvitals"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -83,24 +83,21 @@ android {
     productFlavors { 
         production {
             dimension "default"
-            applicationIdSuffix ""
             manifestPlaceholders = [appName: "Airvitals"]
         }
         staging {
             dimension "default"
-            applicationIdSuffix ".stg"
             manifestPlaceholders = [appName: "[STG] Airvitals"]
         }
         development {
             dimension "default"
-            applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Airvitals"]
+            manifestPlaceholders = [appName: "Airvitals"]
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
